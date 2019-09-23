@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+class lab {
+	int first, second;
+public:
+	int ipart() {
+		if (second > 0) return first * second;
+	}
+	void Init(int a, int b) {
+		first = a;
+		second = b;
+	}
+	void Read() {
+		cout << "Enter first: " << endl;
+		cin >> first;
+		cout << "Enter second: " << endl;
+		cin >> second;
+	}
+	void Display() {
+		cout << "first:" << first << " " << "second:" second << endl;
+	}
+};
+
+int main()
+{
+	lab t1;
+	t1.Init(5, 60);
+	cout << "Perevid:" << t1.ipart() << endl;
+	t1.Display();
+	system("pause");
+
+}
