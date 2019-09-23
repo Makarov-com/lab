@@ -1,0 +1,34 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+class Kasa{
+    unsigned int kilkist=0;
+    double payment=0;
+public:
+    void payingCars(){
+        kilkist++;
+        payment+=0.50;
+    }
+    void nopayCars(){
+        kilkist++;
+    }
+    void Display(){
+        cout<<"Cars:" << kilkist << "Money:"<< payment << endl;
+    }
+};
+int main()
+{
+    cout<<"P- paying, n- nonpaying"<<endl;
+    int vvid;
+    Kasa car;
+    for(;;){
+    vvid=getch();
+    switch (vvid) {
+        case 'p' : car.payingCars(); cout<<"Paying cars:"<<endl; break;
+        case 'n' : car.nopayCars(); cout<<"Nopaying cars:"<<endl; break;
+        case 27 : car.Display(); break;
+        default : cout<<"Error, enter n or p"<<endl; break;
+    }
+    if(vvid==27) break;
+    }
+}
