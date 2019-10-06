@@ -1,0 +1,64 @@
+#include <iostream>
+
+using namespace std;
+
+// Реалізувати один простий клас згідно варіанту індивідуального завдання, що містить
+// закриті данні, а саме два типа даних: числове та рядкове, реалізоване через покажчик на char.
+// Потрібно створити декілька екземплярів класу статично і динамічно, а також масив та
+// продемонструвати дію всіх конструкторів і методів. Реалізувати методи:
+//  Scan - ввід даних з клавіатури у поля класу;
+//  Print - констатний метод виводу даних на екран;
+//  Конструктор по замовчуванню;
+//  Конструктор ініціалізації Клас(сhar*, int);
+//  Конструктор копіювання Клас(const Клас&);
+//  Деструктор
+//  Методи доступу та закритих данних Get та Set
+// var9
+
+class Vegetables
+{
+private:
+ char *Color;
+ int Price;
+public:
+ Vegetables(){}
+ Vegetables( char * Color , int Price){
+     this->Color = Color;
+     this->Price = Price;
+ }
+ Vegetables( const Vegetables &obj ){
+     this->Color = obj.Color;
+     this->Price = obj.Price;
+ }
+ ~Vegetables(){ cout << "Class delete" << endl;delete Color;}
+
+ char *GetColor() { return this->Color; }
+  void SetColor(char *Color) { this->Color = Color; }
+  void SetPrice(int Price) { this->Price = Price; }
+  int GetPrice() { return this->Price; }
+  void Print() { cout << "Color: " << this->Color << ", price: " << this->Price << endl; }
+  void Input()
+  {
+    cout << "Vvedit color: ";
+    cin >> this->Color;
+    cout << "Vvedit price: ";
+    cin >> this->Price;
+  }
+};
+
+int main()
+{
+ Vegetables a;
+  a.Input();
+  a.Print();
+  cout << endl;
+  Vegetables b("test", 10);
+  b.Print();
+  cout << endl;
+  Vegetables c;
+  c.SetPrice(15);
+  c.SetColor("test2");
+  c.Print();
+  system("pause");
+  return 0;
+}
