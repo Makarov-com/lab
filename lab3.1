@@ -1,0 +1,68 @@
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+class Int{
+  int  pol;
+public:
+	Int(){
+	pol= 0;
+	}
+	Int (int _pol){
+	pol= _pol;
+	}
+	Int operator +(Int&  t2){
+		long double temp = t2.pol + this->pol;
+		if (temp <= 2147483648 && temp >= -2147483648){
+			return Int(temp);
+		}
+		else cout << "Fatal error" << endl;
+	}	
+	Int operator =(Int& prs){
+		
+		this-> pol = prs.pol;
+		return *this;
+	}
+	Int operator -(Int&  t2){
+		Int temp;
+		temp.pol= this->pol - t2.pol;
+		return temp;
+	}	
+	Int operator *(Int&  t2){
+		Int temp;
+		temp.pol= t2.pol * this->pol;
+		return temp;
+	}	
+	Int operator /(Int&  t2){
+		Int temp;
+		temp.pol= this->pol / t2.pol;
+		return temp;
+	}	
+	friend ostream& operator <<(ostream&, Int& a);
+
+  void zero(){
+	  pol=0;
+  }
+  int get(){
+      return pol;
+  }
+  void set(int a){
+      pol=a;
+  }
+  Int sum(Int a, Int b){
+      this->pol = a.pol +b.pol;
+  }
+  
+};
+ostream& operator <<(ostream& OS, Int& a){
+	OS << "Sum=" << a.pol << endl;
+ return OS;
+}
+int main()
+{
+    Int t1,t2,t3;
+    t1.set(2);
+    t2.set(5);
+    t3.zero();
+	t3 = t1 + t2;
+	cout << t3;
+}
