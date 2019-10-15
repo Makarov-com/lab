@@ -1,0 +1,27 @@
+#include <iostream>
+
+using namespace std;
+
+class Kolo{
+    int radius,kood;
+public:
+    Kolo(int _radius, int _kood){
+        radius=_radius;
+        kood=_kood;
+    }
+    friend ostream& operator <<(ostream&, Kolo& a);
+    friend istream& operator >>(istream&, Kolo& a);
+};
+ostream& operator <<(ostream& OS, Kolo& a){
+	OS << "Sum=" << a.radius << endl;
+ return OS;
+}
+istream& operator <<(istream& IS, Kolo& a){
+	IS >> a.kood;
+ return IS;
+}
+int main()
+{
+    cout << "Hello World!" << endl;
+    return 0;
+}
