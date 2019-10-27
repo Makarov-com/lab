@@ -1,0 +1,52 @@
+#include <iostream>
+
+using namespace std;
+class publication{
+protected:
+    string name;
+    float price;
+public:    
+    publication();
+    float getprice(){
+        return price;
+    }
+    void setname(string a){
+        name=a;}
+      string getname(){
+          return name;
+      }
+      void setprice(float a){
+          price=a;}
+      ~publication();
+};
+class book : public publication{
+    int papers;
+public:
+    book();
+    int getpapers(){
+        return papers;
+    }
+    void setpapers(int a){
+        papers=a;}
+    void print(){
+     cout  << endl << "price= " << endl << "papers=" << papers << endl;  
+    }
+    ~book();
+};
+class type : public publication{
+    float book_time;
+public:
+    float getbook_time(){
+        return book_time;
+    }
+    void setbool_time(float a){
+        book_time=a;}
+};
+int main()
+{
+    book a;
+    a.setprice(50);
+    a.setpapers(240);
+    a.print();
+    return 0;
+}
