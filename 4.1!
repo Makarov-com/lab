@@ -1,0 +1,100 @@
+#include <iostream>
+#include <string.h>
+
+// Уявіть собі видавничу компанію, яка торгує книгами і аудіо-записами
+// цих книг. Створіть клас publication, в якому зберігаються назва (рядок) і ціна (тип
+// float) книги. Від цього класу успадковуються ще два класи: book, який містить
+// інформацію про кількість сторінок у книзі (типу int), і type, який містить час запису
+// книги у хвилинах (тип float). У кожному з цих трьох класів повинен бути метод
+// getdata(), через який можна отримувати дані від користувача з клавіатури, і putdata(),
+// призначений для виведення цих даних.
+// Напишіть функцію main() програми для перевірки класів book і type.
+// Створіть їх об'єкти в програмі і запросіть користувача ввести і вивести дані з
+// використанням методів getdataQ і putdata().
+
+using namespace std;
+
+class publication
+{
+private:
+  string name;
+  float price;
+
+public:
+  publication()
+  {
+    this->name = "";
+    this->price = 0.0;
+  }
+  void putdata()
+  {
+    cout << "name = ";
+    cin >> this->name;
+    cout << "price = ";
+    cin >> this->price;
+    cout << endl;
+  }
+  void printdata()
+  {
+    cout << "Name: " << this->name << ", price: " << this->price << endl;
+  }
+};
+
+class type : public publication
+{
+protected:
+  float time;
+
+public:
+  type()
+  {
+    this->time = 0.0;
+  }
+  void putdata()
+  {
+    cout << "time = " << endl;
+    cin >> this->time;
+  }
+  void printdata()
+  {
+    cout << "Time: " << this->time << endl;
+  }
+};
+
+class book : public publication
+{
+protected:
+  int papers;
+
+public:
+  book()
+  {
+    this->papers = 0;
+  }
+  void putdata()
+  {
+    cout << "pages[int] = " << endl;
+    cin >> this->papers;
+  }
+  void printdata()
+  {
+    cout << "Papers: " << this->papers << endl;
+  }
+};
+
+int main()
+{
+  type a;
+  a.publication::putdata();
+  a.putdata();
+  a.publication::printdata();
+  a.printdata();
+  book b;
+  b.publication::putdata();
+  b.putdata();
+  b.publication::printdata();
+  b.printdata();
+  system("pause");
+  return 0;
+}
+    
