@@ -1,0 +1,130 @@
+#include <iostream>
+#include <string.h>
+// До класів з попереднього завдання (попередньо зберігши окремо
+// код) додайте базовий клас sales, в якому міститься масив, що складається з трьох
+// значень типу float, куди можна записати загальну вартість проданих книг за останні
+// три місяці. Включіть в клас методи getdata() для отримання значень вартості від
+// користувача і putdata() для виведення цих цифр. Змініть класи book і type так, щоб
+// вони стали похідними обох класів: publication і sales. Об'єкти класів book і type
+// повинні вводити і виводити дані про продажі разом з іншими своїми даними.
+// Напишіть функцію main() для створення об'єктів класів book і type, щоб
+// протестувати можливості введення/виведення даних.
+
+using namespace std;
+
+class publication
+{
+private:
+  string name;
+  float price;
+
+public:
+  publication()
+  {
+    this->name = "";
+    this->price = 0.0;
+  }
+  void putdata()
+  {
+    cout << "name[string] = ";
+    cin >> this->name;
+    cout << "price[float] = ";
+    cin >> this->price;
+    cout << endl;
+  }
+  void printdata()
+  {
+    cout << "Name: " << this->name << ", price: " << this->price << endl;
+  }
+};
+
+class sales
+{
+private:
+  float data[3];
+
+public:
+  sales()
+  {
+    this->data[0] = this->data[1] = this->data[2] = 0.0;
+  }
+  void putdata()
+  {
+    cout << "First month= ";
+    cin >> this->data[0];
+    cout << "Second month= ";
+    cin >> this->data[1];
+    cout << "Third month = ";
+    cin >> this->data[2];
+  }
+  void printdata()
+  {
+    cout << "Last month's: " << this->data[0] << " | " << this->data[1] << " | " << this->data[1] << endl;
+  }
+};
+
+class type : public publication, public sales
+{
+private:
+  float time;
+
+public:
+  type()
+  {
+    this->time = 0.0;
+  }
+  void putdata()
+  {
+    cout << "time[float] = ";
+    cin >> this->time;
+  }
+  void printdata()
+  {
+    cout << "Time: " << this->time << endl;
+  }
+};
+
+class book : public publication, public sales
+{
+private:
+  int papers;
+
+public:
+  book()
+  {
+    this->papers = 0;
+  }
+  void putdata()
+  {
+    cout << "papera[int] = ";
+    cin >> this->papers;
+  }
+  void printdata()
+  {
+    cout << "Papers: " << this->papers << endl;
+  }
+};
+
+int main()
+{
+  type a;
+  a.publication::putdata();
+  a.putdata();
+  a.sales::putdata();
+
+  a.publication::printdata();
+  a.printdata();
+  a.sales::printdata();
+
+  book b;
+  b.publication::putdata();
+  b.putdata();
+  b.sales::putdata();
+
+  b.publication::printdata();
+  b.printdata();
+  b.sales::printdata();
+
+  system("pause");
+  return 0;
+}
